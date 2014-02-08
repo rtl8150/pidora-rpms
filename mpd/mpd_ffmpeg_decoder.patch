@@ -1,0 +1,13 @@
+--- src/decoder/ffmpeg_decoder_plugin.c.org	2013-01-07 09:39:40.000000000 +0900
++++ src/decoder/ffmpeg_decoder_plugin.c	2014-01-31 00:04:07.150274000 +0900
+@@ -395,6 +395,10 @@
+ #endif
+ 		return SAMPLE_FORMAT_S32;
+ 
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(51,17,0)
++	case AV_SAMPLE_FMT_FLTP:
++		return SAMPLE_FORMAT_FLOAT;
++#endif
+ 	default:
+ 		break;
+ 	}
